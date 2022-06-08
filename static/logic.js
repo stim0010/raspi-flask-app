@@ -1,3 +1,4 @@
+// SLIDESHOW 
 let slideIndex = 1;
 showSlides(slideIndex);
 
@@ -29,13 +30,15 @@ function showSlides(n) {
   captionText.innerHTML = dots[slideIndex-1].alt;
 }
 
-// Video controls
-var vid = document.getElementById("myVideo");
+// Video controls (using script in the html file)
+// var vid = document.getElementById("video1");
 
-function playVid() {
-    vid.play();
-}
+// console.log(vid);
 
-function pauseVid() {
-    vid.pause();
-}
+// function playVid() {
+//     vid.play();
+// }
+
+// function pauseVid() {
+//     vid.pause();
+// }
