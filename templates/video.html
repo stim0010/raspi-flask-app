@@ -2,11 +2,24 @@
    <head>
       <title>{{ title }}</title>
       <meta charset="utf-8">
-      <!-- <link rel="stylesheet" href="/static/style.css"> -->
+      <link rel="stylesheet" href="/static/style.css">
    </head>
 
    <body>
        <h1>VIDEO</h1>
+      <div>
+         <video id="myVideo" width="320" height="240" controls>
+         <source src="/static/media/video.mp4" type="video/mp4">
+         </video>
+      </div>
+      <div>
+         <div>
+            <button type="button" onclick="playVid()">Play</button>
+         </div>
+         <div>
+            <button type="button" onclick="pauseVid()">Pause</button>
+         </div>
+      </div>
    </body>
-   <!-- <script type="text/javascript" src="/static/logic.js"></script> -->
+   <script type="text/javascript" src="/static/logic.js"></script>
 </html>

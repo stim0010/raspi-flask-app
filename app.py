@@ -1,32 +1,9 @@
 from flask import Flask, render_template
-#from gpiozero import Button
-#from signal import pause 
 import datetime
-
-
-
-##GPIO buttons###
-
-# video_btn = Button(12)
-# image_btn = Button(13)
-
-# def show_vid():
-    
-
-# def show_img():
-
-# video_btn.when_pressed = show_vid
-# image_btn.when_pressed = show_img
-
-#pause()
-
-
 
 ###Flask app###
 
 app = Flask(__name__)
-
-
 
 @app.route('/')
 def index():
