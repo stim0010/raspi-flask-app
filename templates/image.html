@@ -1,11 +1,78 @@
 <!DOCTYPE html>
-<html lang="en">
+   <head>
+      <title>Slideshow</title>
+      <meta charset="utf-8">
+      <link rel="stylesheet" href="/static/style.css">
+   </head>
 
-    <head>
-        <title>Images</title>
-    </head>
+   <body>
+        <!-- Container for the image gallery -->
+        <div class="container">
 
-    <body>
-        <h1>IMAGES PAGE</h1>
-    </body>
-</html>
+            <!-- Full-width images with number text -->
+            <div class="mySlides">
+            <div class="numbertext">1 / 6</div>
+                <img src="/static/media/pic1.jpg" style="width:100%">
+            </div>
+        
+            <div class="mySlides">
+            <div class="numbertext">2 / 6</div>
+                <img src="/static/media/pic2.jpg" style="width:100%">
+            </div>
+        
+            <div class="mySlides">
+            <div class="numbertext">3 / 6</div>
+                <img src="/static/media/pic3.jpg" style="width:100%">
+            </div>
+        
+            <div class="mySlides">
+            <div class="numbertext">4 / 6</div>
+                <img src="/static/media/pic4.jpg" style="width:100%">
+            </div>
+        
+            <div class="mySlides">
+            <div class="numbertext">5 / 6</div>
+                <img src="/static/media/pic5.jpg" style="width:100%">
+            </div>
+        
+            <div class="mySlides">
+            <div class="numbertext">6 / 6</div>
+                <img src="/static/media/pic6.jpg" style="width:100%">
+            </div>
+        
+            <!-- Next and previous buttons -->
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        
+            <!-- Image text -->
+            <div class="caption-container">
+            <p id="caption"></p>
+            </div>
+        
+            <!-- Thumbnail images -->
+            <div class="row">
+            <div class="column">
+                <img class="demo cursor" src="/static/media/pic1.jpg" style="width:100%" onclick="currentSlide(1)" alt="Palm Trees">
+            </div>
+            <div class="column">
+                <img class="demo cursor" src="/static/media/pic2.jpg" style="width:100%" onclick="currentSlide(2)" alt="Water & Mountains">
+            </div>
+            <div class="column">
+                <img class="demo cursor" src="/static/media/pic3.jpg" style="width:100%" onclick="currentSlide(3)" alt="Archeology">
+            </div>
+            <div class="column">
+                <img class="demo cursor" src="/static/media/pic4.jpg" style="width:100%" onclick="currentSlide(4)" alt="Tiger">
+            </div>
+            <div class="column">
+                <img class="demo cursor" src="/static/media/pic5.jpg" style="width:100%" onclick="currentSlide(5)" alt="Air Brush Painting">
+            </div>
+            <div class="column">
+                <img class="demo cursor" src="/static/media/pic6.jpg" style="width:100%" onclick="currentSlide(6)" alt="Bird's Eye View">
+            </div>
+            </div>
+        </div>
+   </body>
+
+   <script type="text/javascript" src="/static/logic.js"></script>
+
+   </html>
