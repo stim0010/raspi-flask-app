@@ -5,9 +5,45 @@
       <!-- <link rel="stylesheet" href="/static/style.css"> -->
    </head>
 
-   <body>
+   <header>      
       <h1>{{ headline }}</h1>
       <h2>The date and time on the server is: {{ time }}</h2>
-   </body>
+   </header>
+
+<a href="javascript:toggle('img-win')" ><b>images</b></a>               
+<a href="javascript:toggle('vid-win')" ><b>videos</b></a>
+    
+<div id="img-win">
+        <div class="embed-container">
+	    <iframe class="show-images" width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="images" 
+	    src="/image"></iframe>
+    </div>		
+</div>
+
+<div id="vid-win" style="display:none;">
+    	<div class="embed-container">
+		<iframe class="show-video" width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="videos" 
+		src="/video">
+		</iframe>
+	</div>	
+</div>
+
+
+   <script>
+
+   var divs = [ "img-win", "vid-win" ];
+      function toggle(layer) {
+          var d
+          for(var i = 0; i < divs.length; i += 1) {
+              d = document.getElementById(divs[i]);
+              d.style.display = 'none';
+          }
+          d = document.getElementById(layer);
+          d.style.display = '';
+      }
+
+   </script>
+
+
    <!-- <script type="text/javascript" src="/static/logic.js"></script> -->
 </html>

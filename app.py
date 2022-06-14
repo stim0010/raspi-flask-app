@@ -1,7 +1,7 @@
 from flask import Flask, render_template
 import datetime
-
-###Flask app###
+import os
+import media_files
 
 app = Flask(__name__)
 
@@ -18,25 +18,16 @@ def index():
 
     return render_template('index.html', **templateData)
 
-# trying to get the button to render_template
-
 @app.route('/video')
 def video():
-
-    templateData = {
-        'title' : 'VIDEO'
-      }
-    return render_template('video.html', **templateData)
+    video_name = media_files.get_videos()
+    return render_template('video.html', video_name=video_name)
 
 @app.route('/image')
 def image():
-
-    templateData = {
-        'title' : 'IMAGE'
-      }
-      
-    return render_template('image.html', **templateData)
+  image_name = media_files.get_images() 
+  return render_template('image.html', image_name=image_name)
 
 
 if __name__ == "__main__":
-   app.run(host='0.0.0.0', port=80, debug=True)
+   app.run()

@@ -4,4 +4,4 @@ Raspberry Pi Flask App
 
 Video page;
 
-    using html events - 'onpause' get & save video time
+    using html events - 'onpause get & save video time ('currentTime' property)

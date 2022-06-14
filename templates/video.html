@@ -1,36 +1,39 @@
 <!DOCTYPE html>
-   <head>
-      <title>{{ title }}</title>
-      <meta charset="utf-8">
-      <link rel="stylesheet" href="/static/style.css">
-   </head>
+<html>
 
-   <body>
-       <h1>VIDEO</h1>
-      <div>
+
+<div id="video-content">
+   {% for video in video_name %}
+   <div class="mySlides">
+      <img src="/static/media/videos/{{ video }}" style="width:75%">
+      <p>Filename: {{ video }}</p>
+   </div>
+   {% endfor %} 
+</div>
+
+      <div id = "vid-div">
          <video id="video1" width="100%" height="100%" allowfullscreen>
          <source src="/static/media/video.mp4" type="video/mp4">
          </video>
       </div>
-      <div>
+      <!-- <div>
          <div id="btn-row">
             <button class="button" type="button" onclick="playVid()">Play</button>
             <button class="button" type="button" onclick="pauseVid()">Pause</button>
-            <!-- <button class="button" type="button" onclick="nextVid()">Next</button> -->
+            <button class="button" type="button" onclick="nextVid()">Next</button> -->
          </div>
-      </div>
-   </body>
+      </div> -->
    
    <script> 
-      var vid = document.getElementById("video1"); 
+      // var vid = document.getElementById("video1"); 
       
-      function playVid() { 
-        vid.play(); 
-      } 
+      // function playVid() { 
+      //   vid.play(); 
+      // } 
       
-      function pauseVid() { 
-        vid.pause(); 
-      } 
+      // function pauseVid() { 
+      //   vid.pause(); 
+      // } 
 
       // function nextVid() { 
       //   vid.currentTime += 10; 
