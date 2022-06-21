@@ -28,6 +28,10 @@ def image():
   image_name = media_files.get_images() 
   return render_template('image.html', image_name=image_name)
 
+# @app.route('/events')
+# def events():
+  ##listen for events --> if image is clicked, show image --> if video is clicked, show video
+
 
 if __name__ == "__main__":
    app.run()

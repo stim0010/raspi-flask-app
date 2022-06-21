@@ -1,43 +1,59 @@
 <!DOCTYPE html>
 <html>
 
-
-<div id="video-content">
+<div id="vid-carousel">
    {% for video in video_name %}
-   <div class="mySlides">
-      <img src="/static/media/videos/{{ video }}" style="width:75%">
-      <p>Filename: {{ video }}</p>
+   <div>
+      <video id="video" width="100%" height="100%" allowfullscreen>
+      <source src="/static/media/videos/{{ video }}" type="video/mp4">
+      </video>
    </div>
    {% endfor %} 
 </div>
 
-      <div id = "vid-div">
-         <video id="video1" width="100%" height="100%" allowfullscreen>
-         <source src="/static/media/video.mp4" type="video/mp4">
-         </video>
-      </div>
-      <!-- <div>
-         <div id="btn-row">
-            <button class="button" type="button" onclick="playVid()">Play</button>
-            <button class="button" type="button" onclick="pauseVid()">Pause</button>
-            <button class="button" type="button" onclick="nextVid()">Next</button> -->
-         </div>
-      </div> -->
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script type='text/javascript'>
+
+// var video = $('video').get(0);
+
+// $(document).delegate('#play-btn', 'click', function() {
+//         video.load();
+//         video.play();
+//         $('#play-button').addClass('hide');
+//     });
+
+
+//when button !== video is pressed then the video will pause and execute the button function
+//set variable to record the video.currentTime
+//video button will pause video if pressed while video is playing
+
+// $(document).delegate('#pause-btn', 'click', function() {
+//    if (video.paused !== true && video.ended !== true) {
+//          video.pause();
+//    } else {
+//       video.play();
+//       }
+//     });
+
+
+// $(document).delegate('#stop', 'click', function() {
+//         video.pause();
+//         video.currentTime = 0;
+//     });
+
+// $(document).ready(function() {
+//     $("#vid-carousel > div:gt(0)").hide();
+// });
+
+// setInterval(function() { 
+//   $('#vid-carousel > div:first')
+//   .fadeOut(1000)
+//   .next()
+//   .fadeIn(1000)
+//   .end()
+//   .appendTo('#vid-carousel');
+// }, 3000);
    
-   <script> 
-      // var vid = document.getElementById("video1"); 
-      
-      // function playVid() { 
-      //   vid.play(); 
-      // } 
-      
-      // function pauseVid() { 
-      //   vid.pause(); 
-      // } 
+</script>
 
-      // function nextVid() { 
-      //   vid.currentTime += 10; 
-      // }
-
-      </script> 
 </html>

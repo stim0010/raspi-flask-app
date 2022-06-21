@@ -1,37 +1,38 @@
 <!DOCTYPE html>
 <html>
 
-<div id="image-content">
+<!-- <div id="image-content">
     {% for image in image_name %}
     <div class="mySlides">
-    <img src="/static/media/images/{{ image }}" style="width:75%">
-    <p>Filename: {{ image }}</p>
+    <img src="/static/media/images/{{ image }}" style="width:75%" display="none">
+    </div>
+    {% endfor %} 
+</div> -->
+
+<div id="slideshow">
+    {% for image in image_name %}
+    <div>
+    <img src="/static/media/images/{{ image }}" style="width:75%" display="none">
     </div>
     {% endfor %} 
 </div>
 
-<script>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script type='text/javascript'>
 
-    let slideIndex = 0;
-    showSlides();
-        
-    function showSlides() {
+$(document).ready(function() {
+    $("#slideshow > div:gt(0)").hide();
+});
 
-        let i;
-        let slides = document.getElementsByClassName("mySlides");
-
-        for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";  
-        }
-
-    slideIndex++;
-    slides[slideIndex-1].style.display = "block";
-
-          //restart the slideshow once the last image is shown
-      
-    setTimeout(showSlides, 4000); // Change image every 4 seconds
-    }
-
+setInterval(function() { 
+  $('#slideshow > div:first')
+  .fadeOut(1000)
+  .next()
+  .fadeIn(1000)
+  .end()
+  .appendTo('#slideshow');
+}, 3000);
+   
 </script>
 
 </html>

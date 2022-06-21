@@ -5,32 +5,60 @@
       <!-- <link rel="stylesheet" href="/static/style.css"> -->
    </head>
 
-   <header>      
-      <h1>{{ headline }}</h1>
-      <h2>The date and time on the server is: {{ time }}</h2>
-   </header>
 
-<a href="javascript:toggle('img-win')" ><b>images</b></a>               
-<a href="javascript:toggle('vid-win')" ><b>videos</b></a>
-    
-<div id="img-win">
-        <div class="embed-container">
-	    <iframe class="show-images" width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="images" 
-	    src="/image"></iframe>
-    </div>		
+
+<button type="button" id="home-btn"><a href="/"><b>Home</b></a></button>
+<button type="button" id="image-btn"><a href="javascript:toggle('img-win')" ><b>images</b></a></button>              
+<button type="button" id="video-btn"><a href="javascript:toggle('vid-win')" ><b>videos</b></a></button>
+
+
+<div id="home-screen">
+   <h2>Good Day! The current date and time is {{ time }}</h2>
 </div>
 
-<div id="vid-win" style="display:none;">
-    	<div class="embed-container">
-		<iframe class="show-video" width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="videos" 
-		src="/video">
-		</iframe>
-	</div>	
-</div>
+<div id="img-win" style="display:none;"></div>
+
+<div id="vid-win" style="display:none;"></div>
 
 
-   <script>
 
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script type='text/javascript'>
+
+//load the image & video html into the respective divs
+$(document).ready(function() {
+   $('#img-win').load('/image');
+   $('#vid-win').load('/video');
+   });
+
+   
+var video = $('#vid-win').get(0);
+
+console.log(video);
+//home button functionailty
+//hide image and video divs (don't need to hide the divs because the index route has them already hidden when called)
+//return to index route '/' 
+// $(document).delegate('#home-btn', 'click', function() {
+   
+// });
+
+//image button functionality
+$(document).delegate('#image-btn', 'click', function() {
+   
+});
+
+//video button functionality
+$(document).delegate('#video-btn', 'click', function() {
+   video.load();
+   video.play();
+});
+
+
+
+</script>
+
+<script>
+//toggles between the image div and video div
    var divs = [ "img-win", "vid-win" ];
       function toggle(layer) {
           var d
@@ -45,5 +73,4 @@
    </script>
 
 
-   <!-- <script type="text/javascript" src="/static/logic.js"></script> -->
 </html>
