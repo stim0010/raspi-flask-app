@@ -27,34 +27,22 @@
 
 //load the image & video html into the respective divs
 $(document).ready(function() {
-   $('#img-win').load('/image');
-   $('#vid-win').load('/video');
+ $("#img-win").load('/image');
+   $(document).delegate('#home-btn', 'click', function() {
+      clearInterval(x)
    });
-
    
-var video = $('#vid-win').get(0);
+   // $(document).delegate('#image-btn', 'click', function() {
+   //    $('#img-win').load('/image');
+   // });
 
-console.log(video);
-//home button functionailty
-//hide image and video divs (don't need to hide the divs because the index route has them already hidden when called)
-//return to index route '/' 
-// $(document).delegate('#home-btn', 'click', function() {
-   
-// });
+   // $(document).delegate('#video-btn', 'click', function() {
+   //    $('#vid-win').load('/video');
 
-//image button functionality
-$(document).delegate('#image-btn', 'click', function() {
-   
-});
-
-//video button functionality
-$(document).delegate('#video-btn', 'click', function() {
-   video.load();
-   video.play();
-});
-
-
-
+   //    //how do i target the loaded videos?
+   //    $('video').play();
+   // });
+   });
 </script>
 
 <script>
@@ -68,6 +56,7 @@ $(document).delegate('#video-btn', 'click', function() {
           }
           d = document.getElementById(layer);
           d.style.display = '';
+
       }
 
    </script>

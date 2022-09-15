@@ -1,59 +1,81 @@
 <!DOCTYPE html>
 <html>
 
-<div id="vid-carousel">
+<!-- <div id="videoplayer">
    {% for video in video_name %}
-   <div>
-      <video id="video" width="100%" height="100%" allowfullscreen>
+      <video id="video_id" width="100%" height="100%" allowfullscreen>
       <source src="/static/media/videos/{{ video }}" type="video/mp4">
       </video>
-   </div>
    {% endfor %} 
-</div>
+</div> -->
 
-<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-<script type='text/javascript'>
+<div id="videoContainer" style="display:inline-block"></div>
+<b id="output" style="vertical-align:top"></b>
 
-// var video = $('video').get(0);
+<script>
+   var videoContainer = document.getElementById('videoContainer'),
+    output = document.getElementById('output'),
+    nextVideo,
+    videoObjects =
+    [
+        document.createElement('video'),
+        document.createElement('video')
+    ],
+    vidSources = [
+        {% for video in video_name %}
+        "../static/media/videos/video1.mp4",
+        "../static/media/videos/video2.mp4"
+        {% endfor %}
+    ],
+    //random starting video
+    nextActiveVideo = Math.floor((Math.random() * vidSources.length));
 
-// $(document).delegate('#play-btn', 'click', function() {
-//         video.load();
-//         video.play();
-//         $('#play-button').addClass('hide');
-//     });
+videoObjects[0].inx = 0; //set index
+videoObjects[1].inx = 1;
+
+initVideoElement(videoObjects[0]);
+initVideoElement(videoObjects[1]);
+
+videoObjects[0].autoplay = true;
+videoObjects[0].src = vidSources[nextActiveVideo];
+videoContainer.appendChild(videoObjects[0]);
+
+videoObjects[1].style.display = 'none';
+videoContainer.appendChild(videoObjects[1]);
+
+function initVideoElement(video)
+{
+    video.playsinline = true;
+    video.muted = false;
+    video.preload = 'auto'; //but do not set autoplay, because it deletes preload
+
+    //loadedmetadata is wrong because if we use it then we get endless loop
+    video.onplaying = function(e)
+    {
+        output.innerHTML = 'Current video source index: ' + nextActiveVideo;
+
+        //select next index. If is equal vidSources.length then it is 0
+        nextActiveVideo = ++nextActiveVideo % vidSources.length;
+
+        //replace the video elements against each other:
+        if(this.inx == 0)
+            nextVideo = videoObjects[1];
+        else
+            nextVideo = videoObjects[0];
+
+        nextVideo.src = vidSources[nextActiveVideo];
+        nextVideo.pause();
+    };
+
+    video.onended = function(e)
+    {
+        this.style.display = 'none';
+        nextVideo.style.display = 'block';
+        nextVideo.play();
+    };
+}
 
 
-//when button !== video is pressed then the video will pause and execute the button function
-//set variable to record the video.currentTime
-//video button will pause video if pressed while video is playing
-
-// $(document).delegate('#pause-btn', 'click', function() {
-//    if (video.paused !== true && video.ended !== true) {
-//          video.pause();
-//    } else {
-//       video.play();
-//       }
-//     });
-
-
-// $(document).delegate('#stop', 'click', function() {
-//         video.pause();
-//         video.currentTime = 0;
-//     });
-
-// $(document).ready(function() {
-//     $("#vid-carousel > div:gt(0)").hide();
-// });
-
-// setInterval(function() { 
-//   $('#vid-carousel > div:first')
-//   .fadeOut(1000)
-//   .next()
-//   .fadeIn(1000)
-//   .end()
-//   .appendTo('#vid-carousel');
-// }, 3000);
-   
 </script>
 
 </html>
